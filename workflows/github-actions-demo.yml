@@ -1,0 +1,11 @@
+name: Trigger Personal Site Deploy
+on: [push]
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploying a mirror of the project site to your personal site at ${{ env.url }}💪"
+      - run: curl -X POST ${{ env.deployment_webhook }}
+    env: 
+      deployment_webhook: ${{ secrets.deploy }}
+      url: enter the url of the page the file will be mirrored to #(optional)
